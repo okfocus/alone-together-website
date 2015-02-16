@@ -53,7 +53,14 @@ $(function(){
 		})
 		if (is_desktop) {
 			$el.on("click", function(){
-				gallery.next()
+				var scrollTop = document.body.scrollTop
+				var offsetTop = $el.offset().top
+				if (scrollTop !== offsetTop) {
+					$("body,html").animate({ scrollTop: offsetTop }, 200)
+				}
+				if (Math.abs(scrollTop - offsetTop) < 400) {
+					gallery.next()
+				}
 			})
 			$next.on("click", function(){
 				gallery.next()
