@@ -29,6 +29,9 @@ $(function(){
 	$(".top").on("click", function(){
 		$("body,html").animate({ scrollTop: $(".video").offset().top }, 300)
 	})
+	$(".top a").on("click", function(e){
+		e.stopPropagation()
+	})
 
 	;[ '#alone-gallery',  '#powerplant-gallery' ].forEach(function(id){
 		var $el = $(id)
