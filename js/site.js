@@ -3,8 +3,14 @@ $(function(){
 			is_ipad = (navigator.userAgent.match(/iPad/i)),
 			is_android = (navigator.userAgent.match(/Android/i)),
 			is_mobile = is_iphone || is_ipad || is_android,
+			is_firefox = (navigator.userAgent.match(/Firefox/i)),
+			is_webkit = (navigator.userAgent.match(/WebKit/i)),
+			is_chrome = (navigator.userAgent.match(/Chrome/i)),
+			is_safari = (is_webkit && ! is_chrome),
+			is_firefox = (navigator.userAgent.match(/Firefox/i)),
 			is_desktop = ! is_mobile;
 	$("html").addClass(is_mobile ? "mobile" : "desktop");
+	if (is_firefox || is_safari) { $("html").addClass("firefox"); }
 
 	var s = document.body.style
 
@@ -53,7 +59,7 @@ $(function(){
 	})
 	
 	var fixedScrolling = (function(){
-		if (is_mobile) return;
+		if (is_mobile || is_firefox || is_safari) return;
 
 		var $fixed = $(".fixed"), bgs = []
 		var offsets = []
@@ -85,6 +91,12 @@ $(function(){
 			})
 		}
 		$(window).resize(resize)
+		if (is_safari) {
+			(function animate(){
+				requestAnimationFrame(animate)
+				scroll()
+			})()
+		}
 		$(window).scroll(scroll)
 		build()
 	})();
