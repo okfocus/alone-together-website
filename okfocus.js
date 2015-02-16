@@ -404,10 +404,6 @@ round:!0,background:"#fff",backgroundRepeat:"no-repeat",shadow:"0 0 5px #000",bo
 
 
 $(function(){
-
-	// Demo OKZOOM
-	$("#okzoom").okzoom({
-	});
 	
 	
 	$(".okgallery").okgallery({
