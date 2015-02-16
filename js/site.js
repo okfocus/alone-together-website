@@ -27,7 +27,8 @@ $(function(){
 	}
 
 	$(".top").on("click", function(){
-		$("body,html").animate({ scrollTop: $(".video").offset().top }, 300)
+	 var offsetTop = $(".video").offset().top - (window.innerHeight * 0.05)
+		$("body,html").animate({ scrollTop: offsetTop }, 300)
 	})
 	$(".top a").on("click", function(e){
 		e.stopPropagation()
@@ -54,9 +55,9 @@ $(function(){
 		if (is_desktop) {
 			$el.on("click", function(){
 				var scrollTop = document.body.scrollTop
-				var offsetTop = $el.offset().top
+				var offsetTop = $el.offset().top - (window.innerHeight * 0.05)
 				if (scrollTop !== offsetTop) {
-					$("body,html").animate({ scrollTop: offsetTop }, 200)
+					$("body,html").animate({ scrollTop: offsetTop }, 300)
 				}
 				if (Math.abs(scrollTop - offsetTop) < 400) {
 					gallery.next()
