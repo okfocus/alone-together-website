@@ -33,6 +33,55 @@ $(function(){
 	$(".top a").on("click", function(e){
 		e.stopPropagation()
 	})
+	
+	var youtube;
+	$(".video h2").click(function(){
+		$(".player").fadeIn(300, function(){
+			if (youtube) {
+				return youtube.play()
+			}
+			youtube = youtube || new YT.Player("youtube", {
+				videoId: "GzBJQFI1UaA",
+				width: "90%",
+				height: window.innerWidth * 9/16 * 0.9,
+				events: {
+					onReady: function(){
+						youtube.playVideo()
+					},
+					onStateChange: function(e){
+						if (e.data == 0) { // finished
+							youtube_close()
+						}
+					},
+				},
+				playerVars: {
+					autohide: 1,
+					autoplay: 0,
+					disablekb: 1,
+					controls: 0,
+					enablejsapi: 1,
+					fs: 0,
+					modestbranding: 1,
+					iv_load_policy: 3, // no annotations
+					loop: 0,
+					showinfo: 0,
+					rel: 0,
+					wmode: 'opaque',
+				},
+			})
+		})
+	})
+	$(".player .close").click(youtube_close)
+	function youtube_close (e){
+		e && e.preventDefault()
+		youtube.pauseVideo()
+		$(".player").fadeOut(300)
+	}
+	
+	window.onYouTubePlayerAPIReady = function(){
+		// console.log("youtube api ready")
+	}
+
 
 	;[ '#alone-gallery',  '#powerplant-gallery' ].forEach(function(id){
 		var $el = $(id)
@@ -102,12 +151,6 @@ $(function(){
 			})
 		}
 		$(window).resize(resize)
-		if (is_safari) {
-			(function animate(){
-				requestAnimationFrame(animate)
-				scroll()
-			})()
-		}
 		$(window).scroll(scroll)
 		build()
 	})();
