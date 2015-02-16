@@ -16,6 +16,7 @@
       <link rel="image_src" href="http://alonetogether.network/img/alone-square.png" />
       <meta property="og:site_name" content="RYDER RIPPS - ALONE TOGETHER" />
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:300italic,400italic,700italic,800italic,400,300,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="flickity.css" type="text/css">
 
    </head>
 
@@ -184,12 +185,30 @@
 		float:left;
 		cursor: url(http://static.tumblr.com/fjuuplb/jvHn6re6l/next-cursor.png), auto!important;
 	}
-	.okgallery div {
+	.okgallery .cell {
 		background-position:top center!important;
 		background-size:cover!important;
-		background-attachment:fixed;
-		background-repeat:no-repeat;
+		background-repeat:repeat;
 		background-color:white;
+	}
+	.okgallery div {
+		width: 100%;
+		height: 100%;
+	}
+	.okgallery .caption {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 8px 10px;
+		width: auto;
+		height: auto;
+		max-width: 50%;
+		font-weight:100;
+		font-size:12px;
+		line-height:20px;
+		background: rgba(255,255,255,0.5);
+		background-image: url(img/dither.gif);
+		z-index: 2;
 	}
 	.next {
 		float: left;
@@ -328,7 +347,7 @@
 		display:inline-block;
 		width:100%;
 		float:left;
-		padding:10px 0;
+		padding: 14px 0 10px;
 		text-decoration:none;
 		font-weight:900;
 	}
@@ -399,6 +418,7 @@
 		.next {
 			display:none;
 		}
+		.caption { width: 100% }
 		.okgallery {
 		width: 100%!important;
 		height: 40%!important;
@@ -440,14 +460,13 @@
 				ALONE TOGETHER exaggerates the relationship between the content creator and content consumer, illuminating the physical solitude of virtual relationships. This dynamic is physically reinforced by the sculptures’ divided orientation between the upper and lower floors of the space. The upstairs replicates the solitary voyeurism found in the online viewing experience while the downstairs performance enacts the corporal aspects of a network. Viewers are confronted by six performers/users – whose collective digital output is harnessed and fed into a singular, frenzied tableau– a representation of the voracious social feed. Exhibition goers become voyeurs, surveilling the performative Internet experience encased below. Just steps away are six self-mediated video interviews that serve as introductions to each performer/user, drawing back the curtain of content and addressing the dichotomy between our representation and corporal self.
 			</h4>
 			</div>
-			<div class="okgallery">
-				<div style="background-image:url(http://www.brooklynmuseum.org/eascfa/feminist_art_base/archive/images/856.3128.jpg)"></div>
-				<div style="background-image:url(http://artblart.files.wordpress.com/2011/01/installation-shot.jpg)"></div>
-
-				<div style="background-image:url(http://readartny.com/wp-content/uploads/2014/07/Rosen-installation-shot-Monument.jpg)"></div>
-				<div style="background-image:url(http://okfocus.s3.amazonaws.com/images/ico.png)"></div>
-				<div style="background-image:url(http://okfocus.s3.amazonaws.com/images/fpsrail%202.png)"></div>			
-
+			<div class="okgallery" id="alone-gallery">
+				<div class="cell" data-caption="Lorem ipsum instagram blipstagram dingle doo" style="background-image:url(http://www.brooklynmuseum.org/eascfa/feminist_art_base/archive/images/856.3128.jpg)"></div>
+				<div class="cell" data-caption="Dibi dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://artblart.files.wordpress.com/2011/01/installation-shot.jpg)"></div>
+				<div class="cell" data-caption="FOOBAR dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://readartny.com/wp-content/uploads/2014/07/Rosen-installation-shot-Monument.jpg)"></div>
+				<div class="cell" data-caption="BLAH dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://okfocus.s3.amazonaws.com/images/ico.png)"></div>
+				<div class="cell" data-caption="ETC dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://okfocus.s3.amazonaws.com/images/fpsrail%202.png)"></div>
+				<div class="caption"></div>
 			</div>
 			<span class="next">
 				<span>
@@ -520,9 +539,10 @@
 <br><br>
 			Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</h4>
 			</div>
-			<div class="okgallery">
-				<div style="background-image:url(http://4.bp.blogspot.com/-IsLvIIPX6WM/UEimMl8jUUI/AAAAAAAAAHk/4t40Quuaa-w/s1600/Classroom+Right+2.jpg)"></div>
-				<div style="background-image:url(https://visualsonline.cancer.gov/retrieve.cfm?imageid=2200&dpi=300&fileformat=jpg)"></div>
+			<div class="okgallery" id="powerplant-gallery">
+				<div class="cell" data-caption="Powerplant dobi stuff stuff blah" style="background-image:url(http://4.bp.blogspot.com/-IsLvIIPX6WM/UEimMl8jUUI/AAAAAAAAAHk/4t40Quuaa-w/s1600/Classroom+Right+2.jpg)"></div>
+				<div class="cell" data-caption="Etc" style="background-image:url(https://visualsonline.cancer.gov/retrieve.cfm?imageid=2200&dpi=300&fileformat=jpg)"></div>
+				<div class="caption"></div>
 			</div>
 			<span class="next">
 				<span>
@@ -662,5 +682,6 @@
 	</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="js/flickity.pkgd.js"></script>
 <script src="js/site.js"></script>
 </html>

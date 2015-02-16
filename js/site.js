@@ -6,6 +6,32 @@ $(function(){
 			is_desktop = ! is_mobile;
 	$("html").addClass(is_mobile ? "mobile" : "desktop");
 
-
-
+	[ '#alone-gallery',  '#powerplant-gallery' ].forEach(function(id){
+		var $el = $(id)
+		var $next = $el.next(".next")
+		var $caption = $el.find(".caption")
+		var gallery = new Flickity( id, {
+ 			cellSelector: '.cell',
+			wrapAround: true,
+			prevNextButtons: false,
+			pageDots: false,
+			setGallerySize: false,
+			draggable: is_mobile,
+		})
+		gallery.on("select", function(){
+			$caption.html( $(gallery.selectedElement).data("caption") )
+		})
+		gallery.on("settle", function(){
+			$caption.html( $(gallery.selectedElement).data("caption") )
+		})
+		$next.on("click", function(){
+			gallery.next()
+		})
+		if (is_desktop) {
+			$el.on("click", function(){
+				gallery.next()
+			})
+		}
+	})
+	
 });
