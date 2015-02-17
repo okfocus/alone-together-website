@@ -1,22 +1,40 @@
-debug=1;
-$(function(){
-	var is_iphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)),
-			is_ipad = (navigator.userAgent.match(/iPad/i)),
-			is_android = (navigator.userAgent.match(/Android/i)),
-			is_mobile = is_iphone || is_ipad || is_android,
-			is_firefox = (navigator.userAgent.match(/Firefox/i)),
-			is_webkit = (navigator.userAgent.match(/WebKit/i)),
-			is_chrome = (navigator.userAgent.match(/Chrome/i)),
-			is_safari = (is_webkit && ! is_chrome),
-			is_firefox = (navigator.userAgent.match(/Firefox/i)),
-			is_desktop = ! is_mobile;
+
+var is_iphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)),
+    is_ipad = (navigator.userAgent.match(/iPad/i)),
+    is_android = (navigator.userAgent.match(/Android/i)),
+    is_mobile = is_iphone || is_ipad || is_android,
+    is_firefox = (navigator.userAgent.match(/Firefox/i)),
+    is_webkit = (navigator.userAgent.match(/WebKit/i)),
+    is_chrome = (navigator.userAgent.match(/Chrome/i)),
+    is_safari = (is_webkit && ! is_chrome),
+    is_firefox = (navigator.userAgent.match(/Firefox/i)),
+    is_desktop = ! is_mobile;
+
+window.scrollTo(0,0)
+
+var s = document.body.style
+
+var prefix =
+    'webkitTransform' in s ? 'webkit' :
+    'mozTransform' in s ? 'moz' :
+    'msTransform' in s ? 'ms' : '';
+var transformProp = addPrefix("transform");
+function addPrefix (string) {
+    if (prefix) {
+        string = prefix + string.charAt(0).toUpperCase() + string.slice(1)
+    }
+    return string
+}
+
+var fixedScrolling;
+
+function init (){
 	$("html").addClass(is_mobile ? "mobile" : "desktop");
 	if (is_firefox || is_safari) { $("html").addClass("firefox"); }
 	if (is_safari) { $("html").addClass("safari"); }
 	
-	$('body,html').scrollTop(0)
-	document.body.scrollTop = 0
 	$('body').addClass('loading').removeClass('init')
+	window.scrollTo(0,0)
 
 	var loader = new Loader (ready, new alone_loader())
 	var images = []
@@ -30,25 +48,18 @@ $(function(){
 		images.push( $(this).css("background-image").replace("url(","").replace(")","").replace(/"/g,'') )
 	})
 	loader.preloadImages(images)
-	function ready () {
-		$("body").removeClass('loading')
-		fartscroll(300)
-	}
 
-	var s = document.body.style
-
-	var prefix =
-			'webkitTransform' in s ? 'webkit' :
-			'mozTransform' in s ? 'moz' :
-			'msTransform' in s ? 'ms' : '';
-	var transformProp = addPrefix("transform");
-	function addPrefix (string) {
-			if (prefix) {
-					string = prefix + string.charAt(0).toUpperCase() + string.slice(1)
-			}
-			return string
-	}
-
+  bind_galleries()
+}
+function ready () {
+  $("body").removeClass('loading')
+  fartscroll(300)
+  setTimeout(function(){
+    fixedScrolling && fixedScrolling.resize && fixedScrolling.resize()
+  }, 10)
+  bind()
+}
+function bind () {
 	$(".top").on("click", function(){
 	 var offsetTop = $(".video").offset().top - (window.innerHeight * 0.05)
 		$("body,html").animate({ scrollTop: offsetTop }, 300)
@@ -107,9 +118,9 @@ $(function(){
 	window.onYouTubePlayerAPIReady = function(){
 		// console.log("youtube api ready")
 	}
-
-
-	;[ '#alone-gallery',  '#powerplant-gallery' ].forEach(function(id){
+}
+function bind_galleries(){
+	[ '#alone-gallery', '#powerplant-gallery' ].forEach(function(id){
 		var $el = $(id)
 		var $next = $el.next(".next")
 		var $caption = $el.find(".caption")
@@ -134,7 +145,7 @@ $(function(){
 				if (scrollTop !== offsetTop) {
 					$("body,html").animate({ scrollTop: offsetTop }, 300)
 				}
-				if (Math.abs(scrollTop - offsetTop) < 400) {
+				if (Math.abs(scrollTop - offsetTop) < 600) {
 					gallery.next()
 				}
 			})
@@ -143,8 +154,8 @@ $(function(){
 			})
 		}
 	})
-	
-	var fixedScrolling = (function(){
+
+	fixedScrolling = (function(){
 		if (is_mobile || is_firefox || is_safari) return;
 
 		var $fixed = $(".fixed"), bgs = []
@@ -179,10 +190,9 @@ $(function(){
 		$(window).resize(resize)
 		$(window).scroll(scroll)
 		build()
+		this.resize = resize
 	})();
-
-});
-
+}
 
 function alone_loader () {
 	var ctx = real_loader.getContext('2d')
@@ -203,3 +213,5 @@ function alone_loader () {
 		cb()
   }
 }
+
+$(init)
