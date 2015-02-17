@@ -20,7 +20,7 @@
 
    </head>
 
-<body>
+<body class="init">
 	<style>
 	*{
 		box-sizing: border-box;
@@ -32,12 +32,64 @@
 	a {
 		color:#21356B;
 	}
-	body{
+	body.init {
+		opacity: 0;
+	}
+	body {
 		font-family: 'Open Sans Condensed', sans-serif;	
 		margin:0;
 		padding:0;
 		color:#21356B;	
 	}
+	body.loading {
+		overflow: hidden;
+	}
+	
+	#loader {
+		-webkit-transition: opacity 0.3s linear;
+		transition: opacity 0.3s linear;
+		opacity: 0;
+	}
+	.loading #loader {
+		opacity: 1;
+	}
+	#real_loader {
+		width: 48px;
+		height: 48px;
+		margin-left: -10px;
+	}
+	.loading #real_loader {
+		-webkit-animation: spin 0.5s infinite linear;
+		animation: spin 0.5s infinite linear;
+	}
+	@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg) }
+		100% { -webkit-transform: rotate(360deg) }
+	}
+	@keyframes spin {
+		0% { transform: rotate(0deg) }
+		100% { transform: rotate(360deg) }
+	}
+	.init .down-arrow,
+	.loading .down-arrow {
+		opacity: 0;
+	}
+	.down-arrow {
+		cursor: pointer;
+		position: absolute;
+		bottom: 50px;
+		text-align: center;
+		margin-left: -54px;
+		-webkit-animation: bouncy 4.0s ease infinite;
+		-moz-animation: bouncy 4.0s ease infinite;
+		animation: bouncy 4.0s ease infinite;
+		-webkit-transition: opacity 0.4s;
+		transition: opacity 0.4s;
+	}
+	@-webkit-keyframes bouncy { 50% { -webkit-transform: translateY(30px); } }
+	@-moz-keyframes bouncy { 50% { -moz-transform: translateY(30px); } }
+	@keyframes bouncy { 50% { transform: translateY(30px); } }
+	
 	.top {
 		text-align: center;
 		font-size: 12px;
@@ -66,6 +118,12 @@
 		background:url(http://www.collectspace.com/review/sts133_crewportrait05-lg.jpg)no-repeat center;
 		background-size:cover;
 		vertical-align:middle;
+		-webkit-transition: opacity 0.3s;
+		transition: opacity 0.3s;
+	}
+	.init .video,
+	.loading .video {
+		opacity: 0;
 	}
 	.player {
 		position: fixed;
@@ -504,6 +562,12 @@
 			<h4>NY, NY 10011</h4></a>
 			<h4>Feb.28 - Apr.10</h4>
 			<h4>Thursday - Sunday 12-6pm</h4>
+			<br><br>
+			<div id="loader">
+				Loading ...<br><br>
+				<canvas id="real_loader" width="96" height="96"></canvas>
+			</div>
+			<span class="down-arrow"><img src="img/down-arrow.png"></span>
 		</div>
 		
 		<div class="video fixed">
@@ -603,7 +667,7 @@
 		<div class="power">
 			<img src="img/POWRPLNT_Logo.png">
 			<h4 class="sub">Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Curabitur blandit tempus porttitor.
-<br><br>
+			<br><br>
 			Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</h4>
 			</div>
 			<div class="okgallery" id="powerplant-gallery">
@@ -750,6 +814,7 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="js/flickity.pkgd.js"></script>
+<script src="js/loader.js"></script>
 <script src="js/site.js"></script>
 <script type="text/javascript" src="http://www.youtube.com/player_api"></script>
 </html>

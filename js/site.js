@@ -11,6 +11,21 @@ $(function(){
 			is_desktop = ! is_mobile;
 	$("html").addClass(is_mobile ? "mobile" : "desktop");
 	if (is_firefox || is_safari) { $("html").addClass("firefox"); }
+	
+	var loader = new Loader (ready, new alone_loader())
+	var images = []
+	$(".fixed").each(function(){
+		images.push( this.style.backgroundImage.replace("url(","").replace(")","") )
+	})
+	$(".user div").each(function(){
+		images.push( this.style.backgroundImage.replace("url(","").replace(")","") )
+	})
+	loader.preloadImages(images)
+	$('body,html').scrollTop(0)
+	$('body').addClass('loading').removeClass('init')
+	function ready () {
+		$("body").removeClass('loading')
+	}
 
 	var s = document.body.style
 
@@ -159,3 +174,24 @@ $(function(){
 	})();
 
 });
+
+
+function alone_loader () {
+	var ctx = real_loader.getContext('2d')
+	ctx.strokeStyle = '#21356B'
+	ctx.fillStyle = '#21356B'
+  this.update = function (i) {
+//     loading_status.style.width = ((100*(1-i))|0) + "%"
+		ctx.clearRect(0,0,real_loader.width, real_loader.height)
+		ctx.beginPath();
+		ctx.moveTo(real_loader.width,real_loader.width/2)
+		ctx.arc(real_loader.width/2,real_loader.width/2,real_loader.width/2,0,Math.pow(1-i,2)*2*Math.PI);
+		ctx.moveTo(real_loader.width/2,real_loader.width/2)
+		ctx.stroke();
+  }
+  this.finish = function(cb){
+  	$("body").removeClass('loading')
+		$("#loader_rapper").addClass("hidden")
+		return cb()
+  }
+}
