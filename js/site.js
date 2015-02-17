@@ -22,10 +22,11 @@ $(function(){
 	})
 	loader.preloadImages(images)
 	$('body,html').scrollTop(0)
+	document.body.scrollTop = 0
 	$('body').addClass('loading').removeClass('init')
 	function ready () {
 		$("body").removeClass('loading')
-		fartscroll(100)
+		fartscroll(200)
 	}
 
 	var s = document.body.style
