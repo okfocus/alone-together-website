@@ -25,6 +25,7 @@ $(function(){
 	$('body').addClass('loading').removeClass('init')
 	function ready () {
 		$("body").removeClass('loading')
+		fartscroll(100)
 	}
 
 	var s = document.body.style
