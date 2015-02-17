@@ -70,6 +70,7 @@ var Loader = Loader || (function(){
     this.ready("preload");
   }
   Loader.prototype.preloadImage = function(src){
+    if (! src || src == "none") return;
     var _this = this;
     this.register(src);
     var img = new Image();

@@ -14,11 +14,14 @@ $(function(){
 	
 	var loader = new Loader (ready, new alone_loader())
 	var images = []
-	$(".fixed").each(function(){
-		images.push( this.style.backgroundImage.replace("url(","").replace(")","") )
+	$(".video").each(function(){
+		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
+	})
+	$(".fixed .cell:lt(2)").each(function(){
+		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
 	})
 	$(".user div").each(function(){
-		images.push( this.style.backgroundImage.replace("url(","").replace(")","") )
+		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
 	})
 	loader.preloadImages(images)
 	$('body,html').scrollTop(0)
@@ -187,7 +190,7 @@ function alone_loader () {
 		ctx.clearRect(0,0,real_loader.width, real_loader.height)
 		ctx.beginPath();
 		ctx.moveTo(real_loader.width,real_loader.width/2)
-		ctx.arc(real_loader.width/2,real_loader.width/2,real_loader.width/2,0,Math.pow(1-i,2)*2*Math.PI);
+		ctx.arc(real_loader.width/2,real_loader.width/2,real_loader.width/2,0, (0.5-i) * 4 * Math.PI);
 		ctx.moveTo(real_loader.width/2,real_loader.width/2)
 		ctx.stroke();
   }
