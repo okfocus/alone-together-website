@@ -27,10 +27,10 @@ var Loader = Loader || (function(){
 
     this.loaded = true;
     if (this.view) {
-			this.view && this.view.finish(this.readyCallback)
+      this.view && this.view.finish(this.readyCallback)
     }
     else {
-			this.readyCallback && this.readyCallback();
+      this.readyCallback && this.readyCallback();
     }
   }
 

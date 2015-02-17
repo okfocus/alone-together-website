@@ -1,4 +1,4 @@
-
+debug=1;
 $(function(){
 	var is_iphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)),
 			is_ipad = (navigator.userAgent.match(/iPad/i)),
@@ -14,21 +14,22 @@ $(function(){
 	if (is_firefox || is_safari) { $("html").addClass("firefox"); }
 	if (is_safari) { $("html").addClass("safari"); }
 	
-	var loader = new Loader (ready, new alone_loader())
-	var images = []
-	$(".video").each(function(){
-		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
-	})
-	$(".fixed .cell").each(function(){
-		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
-	})
-	$(".user div").each(function(){
-		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
-	})
-	loader.preloadImages(images)
 	$('body,html').scrollTop(0)
 	document.body.scrollTop = 0
 	$('body').addClass('loading').removeClass('init')
+
+	var loader = new Loader (ready, new alone_loader())
+	var images = []
+	$(".video").each(function(){
+		images.push( $(this).css("background-image").replace("url(","").replace(")","").replace(/"/g,'') )
+	})
+	$(".fixed .cell").each(function(){
+		images.push( $(this).css("background-image").replace("url(","").replace(")","").replace(/"/g,'') )
+	})
+	$(".user div").each(function(){
+		images.push( $(this).css("background-image").replace("url(","").replace(")","").replace(/"/g,'') )
+	})
+	loader.preloadImages(images)
 	function ready () {
 		$("body").removeClass('loading')
 		fartscroll(300)
@@ -199,6 +200,6 @@ function alone_loader () {
   this.finish = function(cb){
   	$("body").removeClass('loading')
 		$("#loader_rapper").addClass("hidden")
-		return cb()
+		cb()
   }
 }
