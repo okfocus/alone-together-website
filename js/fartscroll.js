@@ -64,10 +64,8 @@ var fartscroll = (function () {
   };
 
   function getAudioFor(player){
-    if(player.canPlayType("audio/mp3")) {
+    if (player.canPlayType("audio/mp3")) {
       return mp3;
-    } else if(player.canPlayType("audio/ogg")) {
-      return ogg;
     }
   }
 
