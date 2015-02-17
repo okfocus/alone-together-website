@@ -34,22 +34,25 @@ $(function(){
 		e.stopPropagation()
 	})
 	
-	var youtube;
+	var youtubePlayer;
 	$(".video h2").click(function(){
 		$(".player").fadeIn(300, function(){
-			if (youtube) {
-				return youtube.play()
+			if (youtubePlayer) {
+				youtubePlayer.seekTo(0, true)
+				return youtubePlayer.playVideo()
 			}
-			youtube = youtube || new YT.Player("youtube", {
+			youtubePlayer = new YT.Player("youtube", {
 				videoId: "GzBJQFI1UaA",
 				width: "90%",
 				height: window.innerWidth * 9/16 * 0.9,
 				events: {
 					onReady: function(){
-						youtube.playVideo()
+						youtubePlayer.playVideo()
 					},
 					onStateChange: function(e){
 						if (e.data == 0) { // finished
+							youtubePlayer.seekTo(0, true)
+							youtubePlayer.stopVideo()
 							youtube_close()
 						}
 					},
@@ -74,7 +77,7 @@ $(function(){
 	$(".player .close").click(youtube_close)
 	function youtube_close (e){
 		e && e.preventDefault()
-		youtube.pauseVideo()
+		youtubePlayer.stopVideo()
 		$(".player").fadeOut(300)
 	}
 	
