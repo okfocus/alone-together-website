@@ -1,3 +1,4 @@
+
 $(function(){
 	var is_iphone = (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)),
 			is_ipad = (navigator.userAgent.match(/iPad/i)),
@@ -11,13 +12,14 @@ $(function(){
 			is_desktop = ! is_mobile;
 	$("html").addClass(is_mobile ? "mobile" : "desktop");
 	if (is_firefox || is_safari) { $("html").addClass("firefox"); }
+	if (is_safari) { $("html").addClass("safari"); }
 	
 	var loader = new Loader (ready, new alone_loader())
 	var images = []
 	$(".video").each(function(){
 		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
 	})
-	$(".fixed .cell:lt(2)").each(function(){
+	$(".fixed .cell").each(function(){
 		images.push( $(this).css("background-image").replace("url(","").replace(")","") )
 	})
 	$(".user div").each(function(){
@@ -70,7 +72,7 @@ $(function(){
 						youtubePlayer.playVideo()
 					},
 					onStateChange: function(e){
-						if (e.data == 0) { // finished
+						if (e.data == 0 || e.data == 2) { // finished
 							youtubePlayer.seekTo(0, true)
 							youtubePlayer.stopVideo()
 							youtube_close()
@@ -170,7 +172,7 @@ $(function(){
 		function scroll(){
 			var scrollTop = document.body.scrollTop
 			bgs.forEach(function(bg, i){
-				bg.style[transformProp] = "translateY(" + (scrollTop - offsets[i]) + "px)"
+				bg.style[transformProp] = "translateY(" + (scrollTop - offsets[i]) + "px) translateZ(0)"
 			})
 		}
 		$(window).resize(resize)
@@ -190,7 +192,7 @@ function alone_loader () {
 		ctx.clearRect(0,0,real_loader.width, real_loader.height)
 		ctx.beginPath();
 		ctx.moveTo(real_loader.width,real_loader.width/2)
-		ctx.arc(real_loader.width/2,real_loader.width/2,real_loader.width/2,0, (0.5-i) * 4 * Math.PI);
+		ctx.arc(real_loader.width/2,real_loader.width/2,real_loader.width/2,0, (1-i) * 2 * Math.PI);
 		ctx.moveTo(real_loader.width/2,real_loader.width/2)
 		ctx.stroke();
   }
