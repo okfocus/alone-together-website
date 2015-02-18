@@ -38,6 +38,7 @@ function init (){
 
 	var loader = new Loader (ready, new alone_loader())
 	var images = []
+	images.push("http://alonetogether.network/img/POWRPLNT_Logo.png")
 	$(".video").each(function(){
 		images.push( $(this).css("background-image").replace("url(","").replace(")","").replace(/"/g,'') )
 	})
