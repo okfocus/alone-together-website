@@ -57,6 +57,9 @@ function ready () {
   setTimeout(function(){
     fixedScrolling && fixedScrolling.resize && fixedScrolling.resize()
   }, 10)
+  setTimeout(function(){
+    fixedScrolling && fixedScrolling.resize && fixedScrolling.resize()
+  }, 1000)
   bind()
 }
 function bind () {
