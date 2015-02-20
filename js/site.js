@@ -49,8 +49,6 @@ function init (){
 		images.push( $(this).css("background-image").replace("url(","").replace(")","").replace(/"/g,'') )
 	})
 	loader.preloadImages(images)
-
-  bind_galleries()
 }
 function ready () {
   $("body").removeClass('loading')
@@ -62,6 +60,7 @@ function ready () {
     fixedScrolling && fixedScrolling.resize && fixedScrolling.resize()
   }, 1000)
   bind()
+  bind_galleries()
 }
 function bind () {
 	$(".top").on("click", function(){
@@ -124,6 +123,41 @@ function bind () {
 	}
 }
 function bind_galleries(){
+	[ '#alone-gallery', '#powerplant-gallery' ].forEach(function(id){
+		var $el = $(id)
+		var $next = $el.next(".next")
+		var $caption = $el.find(".caption")
+		var gallery = new Flickity( id, {
+ 			cellSelector: '.cell',
+			wrapAround: true,
+			prevNextButtons: false,
+			pageDots: false,
+			setGallerySize: false,
+			draggable: is_mobile,
+		})
+		gallery.on("select", function(){
+			$caption.html( $(gallery.selectedElement).data("caption") )
+		})
+		gallery.on("settle", function(){
+			$caption.html( $(gallery.selectedElement).data("caption") )
+		})
+		if (is_desktop) {
+			$el.on("click", function(){
+				var scrollTop = document.body.scrollTop
+				var offsetTop = $el.offset().top - (window.innerHeight * 0.05)
+				if (scrollTop !== offsetTop) {
+					$("body,html").animate({ scrollTop: offsetTop }, 300)
+				}
+				if (Math.abs(scrollTop - offsetTop) < 600) {
+					gallery.next()
+				}
+			})
+			$next.on("click", function(){
+				gallery.next()
+			})
+		}
+	})
+
 	fixedScrolling = (function(){
 		if (is_mobile || is_firefox || is_safari) return;
 
@@ -162,40 +196,6 @@ function bind_galleries(){
 		this.resize = resize
 	})();
 
-	[ '#alone-gallery', '#powerplant-gallery' ].forEach(function(id){
-		var $el = $(id)
-		var $next = $el.next(".next")
-		var $caption = $el.find(".caption")
-		var gallery = new Flickity( id, {
- 			cellSelector: '.cell',
-			wrapAround: true,
-			prevNextButtons: false,
-			pageDots: false,
-			setGallerySize: false,
-			draggable: is_mobile,
-		})
-		gallery.on("select", function(){
-			$caption.html( $(gallery.selectedElement).data("caption") )
-		})
-		gallery.on("settle", function(){
-			$caption.html( $(gallery.selectedElement).data("caption") )
-		})
-		if (is_desktop) {
-			$el.on("click", function(){
-				var scrollTop = document.body.scrollTop
-				var offsetTop = $el.offset().top - (window.innerHeight * 0.05)
-				if (scrollTop !== offsetTop) {
-					$("body,html").animate({ scrollTop: offsetTop }, 300)
-				}
-				if (Math.abs(scrollTop - offsetTop) < 600) {
-					gallery.next()
-				}
-			})
-			$next.on("click", function(){
-				gallery.next()
-			})
-		}
-	})
 }
 
 function alone_loader () {
