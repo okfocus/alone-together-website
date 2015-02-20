@@ -207,7 +207,7 @@ function alone_loader () {
 		ctx.clearRect(0,0,real_loader.width, real_loader.height)
 		ctx.beginPath();
 		ctx.moveTo(real_loader.width,real_loader.width/2)
-		ctx.arc(real_loader.width/2,real_loader.width/2,real_loader.width/2,0, (1-i) * 2 * Math.PI);
+		ctx.arc(real_loader.width/2,real_loader.width/2,real_loader.width/2 - 2,0, (1-i) * 2 * Math.PI);
 		ctx.moveTo(real_loader.width/2,real_loader.width/2)
 		ctx.stroke();
   }
