@@ -1,0 +1,862 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<!-- ===============================================================
+
+                             __,..+=.__
+            *               |'-._      `'-,
+         *     *            |    `'+-------|
+                            |      |       |         ALONE
+         *     *            |      |  ..   |         TOGETHER
+            *               |      |       |         2015
+                            `'-._  | |\ |\ |
+                            |    `'`--|\--\'
+                             ``'/.,|___|\--\
+                              ,/        "'--'
+                    ,========"'
+                   /
+                  /|\
+              ___/_|_\__
+             |'-._      `'-.,_
+          /|_/    `"'+--------+
+         /--/|       |        |
+        /--/||       |        |
+       /--/| |       |        |
+      /--/|  |       |        |
+     /--/|    `'"-.,_|________|
+================================================ site by okfocus -->
+   <head>
+      <title>ALONE TOGETHER - RYDER RIPPS - RED BULL STUDIOS</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <meta name="keywords" content="ryder ripps, alone together, red bull studios"/>
+      <meta name="description" content=""/
+      <meta name="author" content="RYDER RIPPS" />
+      <link rel="shortcut icon" href="img/favicon.png"/>
+      <meta property="og:title" content="RYDER RIPPS - ALONE TOGETHER"/>
+      <meta property="og:type" content="website"/>
+      <meta property="og:url" content="http://alonetogether.network/"/>
+      <meta property="og:image" content="http://alonetogether.network/img/fb-share.png" />
+      <link rel="image_src" href="http://alonetogether.network/img/alone-square.png" />
+      <meta property="og:site_name" content="RYDER RIPPS - ALONE TOGETHER" />
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:300italic,400italic,700italic,800italic,400,300,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="flickity.css" type="text/css">
+
+   </head>
+
+<body class="init">
+	<style>
+	*{
+		box-sizing: border-box;
+	}
+	h1, h2, h3, h4, h5, p {
+		margin:0;
+		padding:0;
+	}
+	a {
+		color:#21356B;
+	}
+	body,html { width: 100%; height: 100%; }
+	body.init {
+		opacity: 0;
+	}
+	body {
+		font-family: 'Open Sans Condensed', sans-serif;	
+		margin:0;
+		padding:0;
+		color:#21356B;	
+	}
+	body.loading {
+		overflow: hidden;
+	}
+	
+	#loader {
+		-webkit-transition: opacity 0.3s linear;
+		transition: opacity 0.3s linear;
+		opacity: 0;
+	}
+	.loading #loader {
+		opacity: 1;
+	}
+	#real_loader {
+		width: 48px;
+		height: 48px;
+	}
+	.loading #real_loader {
+		-webkit-animation: spin 0.5s infinite linear;
+		animation: spin 0.5s infinite linear;
+	}
+	@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg) }
+		100% { -webkit-transform: rotate(360deg) }
+	}
+	@keyframes spin {
+		0% { transform: rotate(0deg) }
+		100% { transform: rotate(360deg) }
+	}
+	.init .down-arrow,
+	.loading .down-arrow {
+		opacity: 0;
+	}
+	.down-arrow {
+		cursor: pointer;
+		text-align: center;
+		-webkit-animation: bouncy 4.0s ease infinite;
+		-moz-animation: bouncy 4.0s ease infinite;
+		animation: bouncy 4.0s ease infinite;
+		-webkit-transition: opacity 0.4s;
+		transition: opacity 0.4s;
+	}
+	.down-arrow img {
+		width: 50px !important;
+	}
+	@-webkit-keyframes bouncy { 50% { -webkit-transform: translateY(30px); } }
+	@-moz-keyframes bouncy { 50% { -moz-transform: translateY(30px); } }
+	@keyframes bouncy { 50% { transform: translateY(30px); } }
+	
+	.top {
+		text-align: center;
+		font-size: 12px;
+		padding: 15vh 0;
+		background: #f9f9f9;
+		border-bottom: 1px solid;
+	}
+
+	#logo {
+		width: 120px;
+		height: 120px;
+		margin-bottom:20px;
+	}
+	
+	.rapper {
+		width:100%;
+		margin:0 auto;
+		padding-bottom:60px;
+	}
+
+	.video {
+		width:100%;
+		display:table;
+		height:85vh;
+		background:url(http://okfocus.s3.amazonaws.com/random/sts133_crewportrait05-sm.jpg)no-repeat center;
+		background-size:cover;
+		vertical-align:middle;
+		-webkit-transition: opacity 0.3s;
+		transition: opacity 0.3s;
+	}
+	.init .video,
+	.loading .video {
+		opacity: 0;
+	}
+	.player {
+		position: fixed;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		background-color: rgba(0,0,0,0.9);
+		z-index: 2;
+		display: none;
+	}
+	.player .close {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		cursor: pointer;
+		opacity: 0.3;
+	}
+	.desktop .player .close:hover {
+		opacity: 1.0;
+	}
+	#youtube {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+	.fixed {
+		overflow: hidden;
+		position: relative;
+	}
+	.fixed div.bg {
+		display: block !important;
+		position: absolute;
+		top: 0; left: 0;
+		width: 100%;
+		height: 100vh !important;
+		background-size: cover;
+		background-position: top center;
+		z-index: 0;
+	}
+	.firefox .fixed {
+		background-attachment: fixed;
+	}
+	.firefox .fixed.cell {
+		background-attachment: scroll;
+	}
+	.video div {
+		display:table-cell;
+		vertical-align:middle;
+		height:30px;
+		text-align:center;
+		z-index: 1;
+		width: 100%;
+	}
+	.video div span {
+		background:white;
+		display: block;
+		-webkit-transition:0.3s background;
+		transition:0.3s background;
+		font-size: 2vw;
+		font-style: italic;
+		width: 100%;
+	}
+	.video h2 {
+		display: inline;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);
+		padding:5px 5px 0 5px;
+		margin:0;
+		z-index: 1;
+		position: absolute;
+		background: white;
+	}
+	.desktop .video h2:hover {
+		color:white;
+		background:#21356B;
+		cursor:pointer;
+	}
+	.team {
+		padding: 5%;
+		display:inline-block;
+		width:100%;
+		border-bottom: 4px double;
+		margin-bottom: 30px;
+		border-top: 1px solid;
+	}
+	h1.hed {
+		border-bottom:4px double;
+		font-style:italic;
+		padding-bottom:20px;
+		font-size:40px;
+	}
+	.user {
+		display: table;
+		width: 100%;
+	}
+	.user span{
+		float: left;
+		width: 50%;
+		display: inline-block;
+		padding:5%;
+		font-size: 13px;
+		line-height: 21px;
+	}
+	.firefox .user div {
+		background-attachment: fixed;
+		-webkit-transform: translateZ(0);
+	}
+	.user div{
+		display: inline-block;
+		height: 50vh;
+		width: 50%;
+		background-size: 50%;
+		background-position: top left;
+		float:left;
+	}
+	.user .bg {
+		background-size: 50%;
+		background-position: top left;
+	}
+	.user.numen div{
+		background-image: url(http://s3.amazonaws.com/okfocus/images/alone-together/numen.jpg);
+	}
+	.user.kayla div{
+		background-image: url(http://okfocus.s3.amazonaws.com/images/alone-together/kayla.jpg);
+	}
+	
+	.user.marcus div{
+		background-image: url(http://s3.amazonaws.com/okfocus/images/alone-together/marcus.jpg);
+	}
+	
+	.user.victora div{
+		background-image: url(http://okfocus.s3.amazonaws.com/images/alone-together/victoria.jpg);
+	}
+	
+	.user.johnny div{
+		background-image: url(http://s3.amazonaws.com/okfocus/images/alone-together/johnny.jpg);
+	}
+	
+	.user.ajsha div{
+		background-image: url(http://okfocus.s3.amazonaws.com/images/alone-together/ajsha.jpg);
+	}
+	
+	
+	.user span h2{
+		border-bottom:3px double;
+		font-style:italic;
+		padding-bottom:10px;
+		font-size:20px;
+		margin-bottom:15px;
+	}
+	
+	.blurb {
+		border-bottom:1px solid;
+		display:inline-block;
+		width:100%;
+	}
+	
+	.blurb h1 {
+		border-top: 1px solid;
+		padding-top: 20px;
+		padding-left:20px;
+	}
+	
+	h4.sub {
+		font-weight:100;
+		width:50%;
+		margin:20px;
+		font-size:12px;
+		line-height:20px;
+		padding-left:5%;
+	}
+
+	.okgallery{
+		height: 90%!important;
+		width:90%!important;
+		float:left;
+		cursor: url(http://static.tumblr.com/fjuuplb/jvHn6re6l/next-cursor.png), auto!important;
+	}
+	.okgallery .cell {
+		background-position:top center!important;
+		background-size:cover!important;
+		background-repeat:repeat;
+		background-color:white;
+	}
+	.okgallery div {
+		width: 100%;
+		height: 100%;
+	}
+	.okgallery .caption {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 8px 10px;
+		height: auto;
+		max-width: 100%;
+		font-weight: 800;
+		font-size: 12px;
+		line-height: 20px;
+		background: rgba(255,255,255,0.8);
+		z-index: 2;
+		width: 100%;
+		border-top: 1px solid;
+		font-style: italic;
+	}
+	.next {
+		float: left;
+		width: 10%;
+		height: 90%;
+		background: #21356B;
+		text-align: center;
+		color:white;
+		display: table;
+	}
+	.next span{
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 40px;
+		font-weight: bold;
+		cursor: url(http://static.tumblr.com/fjuuplb/jvHn6re6l/next-cursor.png), auto!important;
+		-webkit-transition:0.3s background;
+		transition:0.3s background;
+	}
+	.next span:hover {
+		background:#FFD400;
+		-webkit-user-select:none;
+		
+	}
+	.power {
+		display:inline-block;
+		width:100%;
+		border-bottom:1px solid;
+	}
+	.power img {
+		max-width:100%;
+	}
+	.power .sub {
+		padding:20px 0;
+	}
+	.cal{
+		display:inline-block;
+		width:100%;
+		padding:20px 0;
+		border-top: 1px solid;
+	}
+
+	.event {
+		width: 25%;
+		float: left;
+		padding: 20px 10px;
+		-webkit-transition: 0.3s background;
+		transition: 0.3s background;
+		height: 280px;
+	}
+	/*
+	.desktop .event:hover {
+		cursor:pointer;
+		background:#f6f6f6;
+	}
+	*/
+	.event p{
+		font-weight: 100;
+		font-size: 15px;
+		line-height:18px;
+		margin-bottom: 10px;
+	}
+
+	.event h1{
+		font-weight: 600;
+		font-size: 15px;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+	}
+	.event h2{
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 21px;	
+	}
+	.event h3{
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 21px;
+		margin-top: 9px;
+	}
+	.press {
+		padding:5vw 0;
+		text-align:center;
+		font-weight:900;
+		background:#21356B;
+	}
+	.press a {
+		color:white;
+		text-decoration:none;
+		font-style:italic;
+		font-size:5vw;
+	}
+	.press img {
+		width:100px;
+	}
+	.desktop .press a:hover {
+		text-decoration:underline;
+	}
+	.credits {
+		text-align: center;
+		display: inline-block;
+		width: 100%;
+		padding: 10%;
+		border-top: 4px double;
+		font-family: 'Oswald', sans-serif;
+		font-size: 12px;
+		background: #f4f4f4;
+		border-bottom: 6px double;
+	}
+	.credits h1 {
+		margin-bottom:20px;
+		font-weight:400;
+		font-size:20px;
+		letter-spacing:1px;
+	}
+	.credits span {
+		text-transform:uppercase;
+		margin:0 0.5%;
+		display:inline-block;
+	}
+	.credits span:before {
+		content:"• ";
+	}
+	.credits span:after {
+		content:" •";
+	}
+	.credits span a {
+		text-decoration:none;
+		font-weight:700;	
+	}
+	.credits span a:hover {
+		text-decoration:underline;
+	}
+	.credits span b {
+		font-weight:700;	
+	}
+	.footer {
+		display:inline-block;
+		width:100%;
+		padding:8vw 0;
+	}
+	
+	.footer a{
+		border-bottom:1px solid;
+		display:inline-block;
+		width:100%;
+		float:left;
+		padding: 14px 1vw 10px;
+		text-decoration:none;
+		font-weight:900;
+	}
+	.desktop .footer a:hover {
+		background:#21356B;
+		color:white;
+	}
+	.footer span {
+		width:100%;
+		display:inline-block;
+		padding: 5px;
+		text-align:right;
+		font-style:italic;
+	}
+	
+	
+		@media only screen and (max-device-width: 480px)  { 
+			.rapper, p, .press table, .right {
+				width:100%;
+			}
+
+			.top {
+				padding:90px 0;
+			}
+			.top h4 {
+				font-size: 15px;
+				line-height: 18px;
+			}
+			
+			.video div span {
+				font-size: 20px;
+				
+			}
+			div{
+				background-attachment:scroll!important;
+			}
+			.fixed{
+				background-attachment:scroll!important;
+			}
+
+			.blurb h1 {
+				padding-left:2px;
+			}
+
+			.team {
+				display:none;
+			}
+			.event {
+			width: 50%;
+			padding: 20px 10px;
+			}
+			.event h2 {
+			font-size: 12px;
+			line-height: 18px;
+			}
+			.event h1 {
+			font-size: 16px;
+			margin-bottom: 8px;
+		}
+			.power img {
+			margin-top: 20px;
+			}
+			h4.sub {
+			margin: 0;
+			padding: 18px!important;
+			width:100%;
+		}
+		.credits span {
+		margin: 8px 0.5%;
+	}
+		.next {
+			display:none;
+		}
+		.caption { width: 100% }
+		.okgallery {
+		width: 100%!important;
+		height: 40%!important;
+	}
+	.footer span, .footer {
+		text-align:center;
+	}
+		}
+	</style>
+	
+	<div class="rapper">
+		
+		<div class="top">
+			<img src="img/RED_BULL_ALONE_TOGETHER_LOGO.svg" id="logo">
+			<h1>RYDER RIPPS</h1>
+			<h1><i>ALONE TOGETHER</i></h1>
+			<a href="http://www.redbullstudios.com/newyork" target="_blank">
+			<img src="img/red-bull-studios-new-york-logo.png" style="width:100px;vertical-align:middle;margin:15px 0;">
+			</a>
+			<h4><a href="https://www.google.com/maps/place/220+W+18th+St,+New+York,+NY+10011/@40.7415456,-73.9990224,17z/data=!3m1!4b1!4m2!3m1!1s0x89c259bc149de89b:0x6b988fa1bf454177" target="_blank">220 West 18th St.</h4>
+			<h4>NY, NY 10011</a></h4>
+			<h4>Feb.28 - Apr.10</h4>
+			<h4>Thursday - Sunday 12-6pm</h4>
+			<br><br>
+			<div id="loader">
+				Loading ...<br><br>
+				<canvas id="real_loader" width="96" height="96"></canvas>
+			</div>
+			<span class="down-arrow"><img src="img/down-arrow.png"></span>
+		</div>
+		
+		<div class="video fixed">
+			<div>
+				<span>
+					<h2>CLICK TO WATCH TRAILER</h2>
+				</span>
+			</div>
+		</div>
+		<div class="player">
+			<div id="youtube"></div>
+			<div class="close"><img src="img/close.png"></div>
+		</div>
+		
+		
+		<div class="blurb">
+			<h1 class="hed">The Installation</h1>
+			<h4 class="sub">
+				Conceived by Ryder Ripps, ALONE TOGETHER is a site-specific exhibition for Red Bull Studios New York. As both sculpture and performance, ALONE TOGETHER acts as a microcosm of the Internet, suggesting the following paradox – the more connected we are online, the more physically withdrawn we become. 
+<br><br>
+				ALONE TOGETHER exaggerates the relationship between the content creator and content consumer, illuminating the physical solitude of virtual relationships. This dynamic is physically reinforced by the sculptures’ divided orientation between the upper and lower floors of the space. The upstairs replicates the solitary voyeurism found in the online viewing experience while the downstairs performance enacts the corporal aspects of a network. Viewers are confronted by six performers/users – whose collective digital output is harnessed and fed into a singular, frenzied tableau– a representation of the voracious social feed. Exhibition goers become voyeurs, surveilling the performative Internet experience encased below. Just steps away are six self-mediated video interviews that serve as introductions to each performer/user, drawing back the curtain of content and addressing the dichotomy between our representation and corporal self.
+			</h4>
+			</div>
+			<div class="okgallery" id="alone-gallery">
+				<div class="cell fixed" data-caption="Lorem ipsum instagram blipstagram dingle doo" style="background-image:url(http://www.brooklynmuseum.org/eascfa/feminist_art_base/archive/images/856.3128.jpg)"></div>
+				<div class="cell fixed" data-caption="Dibi dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://artblart.files.wordpress.com/2011/01/installation-shot.jpg)"></div>
+				<div class="cell fixed" data-caption="FOOBAR dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://readartny.com/wp-content/uploads/2014/07/Rosen-installation-shot-Monument.jpg)"></div>
+				<div class="cell fixed" data-caption="BLAH dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://okfocus.s3.amazonaws.com/images/ico.png)"></div>
+				<div class="cell fixed" data-caption="ETC dobi sin twitter facebook capslock key doodle dongle" style="background-image:url(http://okfocus.s3.amazonaws.com/images/fpsrail%202.png)"></div>
+				<div class="caption"></div>
+			</div>
+			<span class="next">
+				<span>
+				&#9654;
+				</span>
+			</span>
+		
+		
+		<div class="team">
+			<h1 class="hed">Meet the Users</h1>
+			
+			<div class="user numen">
+				<span>
+					<h2>Numen</h2>
+					Numen is taking a gap year off from college and spent the last six months traveling the world— working for an NGO in India, brushing up on his French in France, and visiting family in Switzerland where he also took class on mushroom identification. While being a part of Alone Together, he plans to learn to program in Python, play online games, and pick up another language.
+				</span>
+				<div class="fixed">
+				</div>
+			</div>
+			
+			<div class="user kayla">
+				<div class="fixed">
+				</div>
+				<span>
+					<h2>Kayla</h2>
+					Kayla is obsessed with painting her nails, addicted to Pilates, and considers shopping her number one pass time. She plans to spend most of her time online shopping while part of Alone Together. She is 25 years old.
+				</span>
+			</div>
+			
+			<div class="user marcus">
+				<span>
+					<h2>Marcus</h2>
+					Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper.
+				</span>
+				<div class="fixed">
+				</div>
+			</div>
+			
+			<div class="user victora">
+				<div class="fixed">
+				</div>
+				<span>
+					<h2>Victoria</h2>
+					Victoria is a 20 year old artist living in NYC. She thinks a lot about art, the universe, symbols and dreams. 
+				</span>
+			</div>
+			
+			<div class="user johnny">
+				<span>
+					<h2>Johnny</h2>
+					Johnny Walker is a musician turned soundman turned author. He spent the last four years completing his Multimedia Trilogy titled EKKO, a rock-n-Roll mystery filled with paranormal journeys and sci-fi adventure. As a composer, he added original music to the trilogy, bringing a fictional band to life in iBooks. Johnny currently lives in Inwood, where he enjoys writing, music, restoring furniture, and outdoors activities.
+				</span>
+				<div class="fixed">
+				</div>
+			</div>
+			
+			<div class="user ajsha">
+				<div class="fixed">
+				</div>
+				<span>
+					<h2>Ajsha</h2>
+					Ajsha is an actress and model born and raised on the Upper East Side. She enjoys horseback riding, listening to music from the 40’s and 50’s, and performance art. Her favorite artists include Marina Abramovic, Matthew Barney, and Bjork. 				</span>
+			</div>
+				
+		</div>
+		
+		<div class="power">
+			<img src="img/POWRPLNT_Logo.png">
+			<h4 class="sub">
+				POWRPLNT is a not-for-profit organization founded by Angelina Dreem.  Synthesizing digital art, social justice and interest driven education, POWRPLNT “collaboratories” exist simultaneously as installations and as learning environments where the current generation of media artists can transmit their technical knowledge to the next by example. The aim being to provide equal access to resources for art making in the digital age.
+<br><br>
+				For the installation at Alone Together, Powrplnt is curating six weeks of programming for a group students from City As School,  an alternative public high school that provides real life experiential learning as their curriculum, alongside various interactive and digital works of art.   With programming curated by Hanny Ahern, the students will be engaged in activities like creating plant-triggered soundscapes, coding interactive video, and transforming their drawings into GIFs. Classes will be taught by artists Jack Kalish, Ian Culley, Rebecca Lieberman and Nicholas Bratton.  As the exhibition develops, the students will have the opportunity to display work they’ve made using the tools and concepts they encounter in the space, so that over the course of the exhibition the installation will grow.  
+<br><br>
+				In addition to the classes and the installation, the exhibition features a calendar of all-ages programming that is open to the public, including digital art workshops on Saturdays, an open computer lab on Sundays, and artist lectures on themes relating to digital art, technology and social politics in the context of our contemporary world.
+				
+			</h4>
+			</div>
+			<div class="okgallery" id="powerplant-gallery">
+				<div class="cell fixed" data-caption="Powerplant dobi stuff stuff blah" style="background-image:url(http://4.bp.blogspot.com/-IsLvIIPX6WM/UEimMl8jUUI/AAAAAAAAAHk/4t40Quuaa-w/s1600/Classroom+Right+2.jpg)"></div>
+				<div class="cell fixed" data-caption="Etc" style="background-image:url(https://visualsonline.cancer.gov/retrieve.cfm?imageid=2200&dpi=300&fileformat=jpg)"></div>
+				<div class="caption"></div>
+			</div>
+			<span class="next">
+				<span>
+				&#9654;
+				</span>
+			</span>
+
+			
+			<div class="cal">
+				<h1 class="hed">Programming Calendar</h1>
+				<h4 class="sub">Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Curabitur blandit tempus porttitor.
+				</h4>
+
+				
+				<div class="event">
+				        <p class="date">Feb<br>27</p>
+				        <h1>Alone Together Opening Party</h1>
+				        <h2 class="byline">Celebrating the opening of the exhibit. Total Freedom on the decks.</h2>
+				        <h3>6:00 - 11:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">Mar<br>5</p>
+				        <h1>Juvenile Performance</h1>
+				        <h2 class="byline">Rapper Juvenile preforms, celebrating the opening of The Gift Shop and custom Alone Together apparel.</h2>
+				        <h3>6:00 - 11:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">Mar<br>6</p>
+				        <h1>POWRPLNT, Discussion</h1>
+				        <h2 class="byline">Avatar as Art Discussion with Genevieve Belleveau, Hayden Dunham and more 
+						A group discussion on the Glorified body, the guru aspect of the Internet based artist.</h2>
+				        <h3>6:00 - 9:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">Mar<br>7</p>
+				        <h1>POWRPLNT, Sound Lessons</h1>
+				        <h2 class="byline">Ableton Live Sound Design with Adriano Clemente. Learn the essentials of Ableton Live and how to construct dynamic soundscapes.</h2>
+				        <h3>2:00 - 5:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">Mar<br>14</p>
+				        <h1>POWRPLNT, girl jam</h1>
+				        <h2 class="byline">Bring an idea or a song that you have and develop it to finish in this 2 course class.
+						Female identified persons’ only please!</h2>
+				        <h3>4:00 - 7:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">Mar<br>21</p>
+				        <h1>POWRPLNT, Design for 3D printing with Heidi Lee</h1>
+				        <h2 class="byline">lorem</h2>
+				        <h3>4:00 - 7:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">Mar<br>28</p>
+				        <h1>POWRPLNT, Log And Capture: Video Editing in Premiere with Valerie Veatch
+						</h1>
+				        <h2 class="byline">lorem</h2>
+				        <h3>1:00 - 3:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">April<br>4</p>
+				        <h1>POWRPLNT, Discwoman Takeover</h1>
+				        <h2 class="byline">Mixer basics and a discussion on women in the music industry followed by live performances.</h2>
+				        <h3>? - ?pm</h3>
+				 </div>
+				
+			</div>
+			<div class="credits">
+				<h1>CREDITS</h1>
+				<span><a href="http://ryder-ripps.com">Ryder Ripps</a> - CONCEPT, installation/graphic/web design, casting, video direction, technical supervisor</span>
+				<span><a href="http://carbonpictures.com/jules/">JULES LAPLACE</a> - technology development</span>
+				<span><b>Max Wolf</b> - Program Director</span>
+				<span><b>victoria</b> - USER/PERFORMER</span>
+				<span><a href="#">johnny walker</a> - USER/PERFORMER</span>
+				<span><a href="#">numen</a> - USER/PERFORMER</span>
+				<span><a href="#">ajsha</a> - USER/PERFORMER</span>
+				<span><a href="#">keyla</a> - USER/PERFORMER</span>
+				<span><a href="#">marcus</a> - USER/PERFORMER</span>
+				<span><a href="http://vincemckelvie.com/">VINCE MCKELVIE</a> - RENDERING</span>
+				<span><a href="http://dannydwyer.com/">danny dwyer</a> - Video direction & production, editing</span>
+				<span><b>Angelina Dreem</b> - POWRPLNT Founder and Creative Director</span>
+				<span><b>Hanny Ahern</b> - powrplnt Education Programmer</span>
+				<span><b>Miguel Gaydosh</b> - powrplnt Graphic Design</span>
+				<span><b>Marcella Zimmerman</b> - PR</span>
+				<span><b>Adam Gorode</b> - PR</span>
+				<span><b>Sherlen Archibald</b> - PR</span>
+				<span><b>Steffi Muehlenkamp</b> - PR</span>
+				<span><b>Jenn Cooper</b> - Event Production Manager</span>
+				<span><b>Radio Joe</b> - Audio Assistance</span>
+				<span><b>Alicia Amelia Holt</b> - Production Assistant/Model</span>
+				<span><b>Alex Behnke</b> - Red Bull Culture Marketing Manager</span>
+				<span><b>RJ Murphy</b> - Red Bull Studios Facilities Manager</span>
+				<span><b>Bill Connors</b> - Red Bull Head of Brand Marketing</span>
+				<span><b>Mac Concordia</b> - Red Bull Digital Marketing Specialist</span>
+				<span><b>Hannah Chun</b> - Red Bull Digital Activations Manager</span>
+				<span><b>Emily Connor</b> - Red Bull Communications Specialist</span>
+				<span><b>Matt Dianella</b> - Red Bull Senior Communications Manager</span>
+				<span><b>Wolfgang Construction and Hite Design</b></span>
+				<span><b>Shan Raoufi</b> - Foremost Foreman</span>
+				<span><b>Greta Hansen</b> - Consulting Architect</span>
+				<span><b>Kyla Chevrier</b> - Exhibition Installation</span>
+				<span><b>Kyle Jaques</b> - Exhibition Installation</span>
+				<span><b>Dylan Treleven</b> - Exhibition Installation</span>
+				<span><b>Emerson Gates</b> - Exhibition Installation</span>
+				<span><b>Christian Hansen</b> - Exhibition Installation</span>
+				<span><b>John Thomas Saczko</b> - Exhibition Installation</span>
+				<span><b>Katie Loselle</b> - Exhibition Installation</span>
+				<span><b>Justin Clark</b> - Exhibition Installation</span>
+				<span><b>Oj San Felipe</b> - Exhibition Installation</span>
+				<span><b>James DeVito</b> - Window LED Engineer/Designer</span>
+				<span><b>Dave Rife</b> - Window LED Engineer/Technical Designer</span>
+				<span><b>Gabe Liberti</b> - Window LED Engineer/Technical Designer</span>
+				<span><b>Amelia Cleary</b> - city-as school</span>
+				<span><b><a href="http://jackkalish.com">Jack Kalish</a></b> - powrplnt teaching artist</span>
+				<span><b>Rebecca Lieberman</b> - powrplnt teaching artist</span>
+				<span><b>Nicholas Bratton</b> - powrplnt teaching artist</span>
+				<span><b>Ian Culley</b> - powrplnt teaching artist</span>
+			</div>
+			
+			<div class="press">
+				<a href="#">DOWNLOAD PRESS KIT</a>
+			</div>
+			<div class="footer">
+				<span>FOOTER</span>
+				<a href="http://www.redbullstudios.com/newyork">Red Bull Studios</a>
+				<a href="#">Contact</a>
+				<a href="http://www.redbullstudios.com/newyork">Ryder Ripps</a>
+				<span style="margin-top:10px">Red Bull Studios / Ryder Ripps ©2015</span>
+				
+			</div>
+	
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="js/flickity.pkgd.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/fartscroll.js"></script>
+<script src="js/site.js"></script>
+<script type="text/javascript" src="http://www.youtube.com/player_api"></script>
+</html>
