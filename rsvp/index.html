@@ -1,0 +1,64 @@
+<style>
+body,html {
+	width: 100%; height: 100%; margin: 0; padding:0; font-family: Helvetica, sans-serif;
+}
+#hero {
+	width: 100%;
+	height: 40%;
+	background-image: url(http://okfocus.s3.amazonaws.com/images/ALONE-TOGETHER-RYDER-RIPPS-INVITE.jpg);
+	background-attachment:fixed;
+}
+#thanks { display: none; }
+</style>
+<div id="hero"></div>
+
+<form id="form">
+	<div id="fields">
+		RSVP here!<br>
+		<div>
+			<label>First name</label>
+			<input type="text" name="entry.279521458">
+		</div>
+		<div>
+			<label>Last name</label>
+			<input type="text" name="entry.803495437">
+		</div>
+		<div>
+			<label>Email</label>
+			<input type="text" name="entry.1815746579">
+		</div>
+		<div>
+			<label>+1</label>
+			<input type="checkbox" name="entry.1184352730" value="+1">
+		</div>
+		<div>
+			<label>Affiliation</label>
+			<input type="text" name="entry.236209865">
+		</div>
+		<input type="submit" value="Submit">
+	</div>
+	<div id="thanks">
+		Thanks!
+	</div>
+</form>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+var emailRegex = new RegExp("[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z\.+_]+\.[a-zA-Z]{2,4}")
+$("#form").submit(function(e){
+	e.preventDefault()
+	var data = $("form").serialize()
+/*
+	var email = $("#email_submit").val()
+	if (! email.match(emailRegex)) {
+		alert("Not a real email address..")
+		return
+	}
+*/
+	data['submit'] = "Submit"
+	$.get("https://docs.google.com/forms/d/1Eg327-zkMB6uJ5ucwI3Dh_gBLc1IO-CZ8fXc817rG4w/formResponse", data)
+	$("#fields").hide()
+	$("#thanks").show()	
+})
+</script>
+
