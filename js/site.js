@@ -142,7 +142,9 @@ function bind_galleries(){
 			$caption.html( $(gallery.selectedElement).data("caption") )
 		})
 		if (is_desktop) {
-			$el.on("click", function(){
+			$el.on("click", next)
+			$next.on("click", next)
+			function next(){
 				var scrollTop = document.body.scrollTop
 				var offsetTop = $el.offset().top - (window.innerHeight * 0.05)
 				if (scrollTop !== offsetTop) {
@@ -151,10 +153,7 @@ function bind_galleries(){
 				if (Math.abs(scrollTop - offsetTop) < 600) {
 					gallery.next()
 				}
-			})
-			$next.on("click", function(){
-				gallery.next()
-			})
+			}
 		}
 	})
 
