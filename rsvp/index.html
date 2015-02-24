@@ -17,7 +17,7 @@ body,html {
 #thanks { display: none; }
 h1 { margin: 30px; }
 label { display: inline-block; }
-input[type=text] { width: 66%; border:1px solid #21356B; font-size:16px;padding:4px 2px;-webkit-appearance: none;border-radius:0;}
+input[type=text],input[type=email] { width: 66%; border:1px solid #21356B; font-size:16px;padding:4px 2px;-webkit-appearance: none;border-radius:0;}
 input[type=submit] {
 	-webkit-appearance: none;
 	border-radius:0;
@@ -43,7 +43,7 @@ img{
 		margin-top:0;
 		padding:5px;
 	}
-	input[type=text] { width: 65%;}
+	input[type=text],input[type=email] { width: 65%;}
 	#footer div { float: left;width:100%;padding:10px 0; display:inline-block}
 }
 </style>
@@ -56,15 +56,15 @@ img{
 	<div id="fields">
 		<div>
 			<label>First name:</label>
-			<input type="text" name="entry.279521458">
+			<input type="text" name="entry.279521458" required>
 		</div>
 		<div>
 			<label>Last name:</label>
-			<input type="text" name="entry.803495437">
+			<input type="text" name="entry.803495437" required>
 		</div>
 		<div>
 			<label>Email:</label>
-			<input type="text" name="entry.1815746579">
+			<input type="email" name="entry.1815746579" required>
 		</div>
 		<div>
 			<label>+1?</label>
@@ -72,7 +72,7 @@ img{
 		</div>
 		<div>
 			<label>Affiliation:</label>
-			<input type="text" name="entry.236209865">
+			<input type="text" name="entry.236209865" required>
 		</div>
 		<input type="submit" value="Submit" style="background:#21356B; width:100%; text-align:center;border:0px solid;color:white;padding:10px 0;font-size:20px">
 	</div>
