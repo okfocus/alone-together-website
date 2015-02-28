@@ -79,7 +79,7 @@ function bind () {
 				return youtubePlayer.playVideo()
 			}
 			youtubePlayer = new YT.Player("youtube", {
-				videoId: "GzBJQFI1UaA",
+				videoId: "cSTjZPFEZEY",
 				width: "90%",
 				height: window.innerWidth * 9/16 * 0.9,
 				events: {
