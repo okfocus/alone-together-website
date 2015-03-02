@@ -1,0 +1,122 @@
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:300italic,400italic,700italic,800italic,400,300,700,800' rel='stylesheet' type='text/css'>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+body,html {
+	font-family: 'Open Sans Condensed', sans-serif;	
+	margin:0;
+	padding:0;
+	color:#21356B;
+	text-align:center;
+	background: #f1f1f1;
+}
+*{
+	box-sizing: border-box;
+}
+#thanks { display: none; }
+h1 { margin: 30px; }
+label { display: inline-block; }
+input[type=text],input[type=email] { width: 66%; border:1px solid #21356B; font-size:16px;padding:4px 2px;-webkit-appearance: none;border-radius:0;}
+input[type=submit] {
+	-webkit-appearance: none;
+	border-radius:0;
+}
+#fields { font-weight:600}
+#fields div {margin-bottom:10px;font-size:12px; }
+
+#fields label { width:33%}
+#footer { border-top: 1px solid; padding: 30px 0;display:inline-block;width:100%;margin-top:50px;background:#f8f8f8 }
+#footer div { float: left;width:33%;}
+#footer h4 { line-height: 10px; font-size: 14px; font-weight:600; }
+img{
+	max-width:100%;
+	max-height:80vh;
+}
+.rapper {
+	margin-top:10px;
+	display: inline-block;
+	text-align:left;
+}
+@media only screen and (max-device-width: 480px)  { 
+	.rapper {
+		margin-top:0;
+		padding:5px;
+	}
+	input[type=text],input[type=email] { width: 65%;}
+	#footer div { float: left;width:100%;padding:10px 0; display:inline-block}
+}
+</style>
+</head>
+<body>
+<div class="rapper">
+<img src="http://okfocus.s3.amazonaws.com/alone/THE-GIFT-SHOP-INVITE-FINAL.jpg">
+<br><br>
+<form id="form">
+	<div id="fields">
+		<div>
+			<label>First name:</label>
+			<input type="text" name="entry.559574767" required>
+		</div>
+		<div>
+			<label>Last name:</label>
+			<input type="text" name="entry.558208813" required>
+		</div>
+		<div>
+			<label>Email:</label>
+			<input type="email" name="entry.957128980" required>
+		</div>
+		<div>
+			<label>+1?</label>
+			<input type="checkbox" name="entry.484629710" value="+1">
+		</div>
+		<div>
+			<label>Affiliation:</label>
+			<input type="text" name="entry.1279407496" required>
+		</div>
+		<input type="submit" value="Submit" style="background:#21356B; width:100%; text-align:center;border:0px solid;color:white;padding:10px 0;font-size:20px">
+	</div>
+	<div id="thanks" style="text-align:center;font-weight:600;font-size:16px">
+		Thanks!
+	</div>
+</form>
+</div>
+
+<div id="footer">
+<div>
+	<a href="/">
+<img src="gift-shop-logo.png" id="logo" style="width:80px;height:auto;margin:0;">
+</a>
+</div>
+<div>
+	<a href="http://www.redbullstudios.com/newyork" target="_blank">
+		<img src="red-bull-studios-new-york-logo.png" style="width:100px;margin:0 30px;">
+	</a>
+</div>
+<div>
+	<h4><a href="https://www.google.com/maps/place/220+W+18th+St,+New+York,+NY+10011/@40.7415456,-73.9990224,17z/data=!3m1!4b1!4m2!3m1!1s0x89c259bc149de89b:0x6b988fa1bf454177" target="_blank">220 West 18th St.</h4>
+	<h4>NY, NY 10011</a></h4>
+</div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+var emailRegex = new RegExp("[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z\.+_]+\.[a-zA-Z]{2,4}")
+$("#form").submit(function(e){
+	e.preventDefault()
+	var data = $("form").serialize()
+/*
+	var email = $("#email_submit").val()
+	if (! email.match(emailRegex)) {
+		alert("Not a real email address..")
+		return
+	}
+*/
+	data['submit'] = "Submit"
+	$.get("https://docs.google.com/forms/d/1EhdwXMbtjzXhyKLj9W6w5_ot1nw05FtUUeHVz-ex6eM/formResponse", data)
+	$("#fields").hide()
+	$("#thanks").show()	
+})
+</script>
+</body>
+</html>
