@@ -158,6 +158,7 @@ function bind_galleries(){
 	})
 
 	fixedScrolling = (function(){
+	  return;
 		if (is_mobile || is_firefox || is_safari) return;
 
 		var $fixed = $(".fixed"), bgs = []

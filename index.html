@@ -174,8 +174,11 @@
 		transform: translate(-50%, -50%);
 	}
 	.fixed {
+/* 
 		overflow: hidden;
 		position: relative;
+ */
+		background-attachment: fixed;
 	}
 	.fixed div.bg {
 		display: block !important;
@@ -190,9 +193,15 @@
 	.firefox .fixed {
 		background-attachment: fixed;
 	}
+/* 
 	.firefox .fixed.cell {
 		background-attachment: scroll;
 	}
+ */
+	.okgallery .fixed.cell {
+		background-attachment: scroll;
+	}
+
 	.video div {
 		display:table-cell;
 		vertical-align:middle;
@@ -335,6 +344,8 @@
 		background-size:cover!important;
 		background-repeat:repeat;
 		background-color:white;
+		background-attachment: fixed;
+		width: 100%; height: 100%;
 	}
 	.okgallery div {
 		width: 100%;
