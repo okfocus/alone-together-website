@@ -174,8 +174,11 @@
 		transform: translate(-50%, -50%);
 	}
 	.fixed {
+/* 
 		overflow: hidden;
 		position: relative;
+ */
+		background-attachment: fixed;
 	}
 	.fixed div.bg {
 		display: block !important;
@@ -190,9 +193,15 @@
 	.firefox .fixed {
 		background-attachment: fixed;
 	}
+/* 
 	.firefox .fixed.cell {
 		background-attachment: scroll;
 	}
+ */
+	.okgallery .fixed.cell {
+		background-attachment: scroll;
+	}
+
 	.video div {
 		display:table-cell;
 		vertical-align:middle;
@@ -335,6 +344,8 @@
 		background-size:cover!important;
 		background-repeat:repeat;
 		background-color:white;
+		background-attachment: fixed;
+		width: 100%; height: 100%;
 	}
 	.okgallery div {
 		width: 100%;
@@ -554,6 +565,8 @@
 			.event {
 			width: 50%;
 			padding: 20px 10px;
+			height: auto;
+      min-height: 290px;
 			}
 			.event h2 {
 			font-size: 12px;
@@ -826,19 +839,19 @@
 				 </div>
 
 				
-				<div class="event">
-				        <p class="date">April<br>3</p>
-				        <h1>POWRPLNT, Sex Ed and the Online Body with Ana Cecilia, Victoria Campbell</h1>
-				        <h2 class="byline">Performance by Alaina Stamatis</h2>
-				        <h3>6:00 - 9:00pm</h3>
-				 </div>
-				
 				
 				<div class="event">
 				        <p class="date">April<br>4</p>
 				        <h1>Discwoman Takeover [Party]</h1>
 				        <h2 class="byline">Mixer basics and a discussion on women in the music industry followed by live performances.</h2>
 				        <h3>2:00 - 7:00pm</h3>
+				 </div>
+				
+				<div class="event">
+				        <p class="date">April<br>9</p>
+				        <h1>Soft Skills: Mastering Online Performance</h1>
+				        <h2 class="byline">Learn how to go from network to net worth in an online dating training module designed to enhance performance across multiple profile-based environments. Conceived by Victoria Campbell, Ana Cecelia Alvarez, and Micaela Carolan. Performance by Alaina Stamatis.</h2>
+				        <h3>7:00 - 10:00pm</h3>
 				 </div>
 				
 			</div>
